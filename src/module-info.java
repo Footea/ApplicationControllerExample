@@ -1,0 +1,2 @@
+module ApplicationControllerExample {
+}
