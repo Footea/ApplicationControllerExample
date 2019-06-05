@@ -9,6 +9,7 @@ public class ApplicationController {
 	
 	public ApplicationController() {
 		commands = new HashMap<String, Handler>();
+		commands.put("addBook", new AddBookHandler());
 		commands.put("displayBooks", new DisplayBooksHandler());
 		commands.put("displayMenu", new DisplayMenuHandler());
 	}
