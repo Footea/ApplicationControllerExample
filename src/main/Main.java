@@ -13,7 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 		ApplicationController controller = new ApplicationController();
 		Scanner scanner = new Scanner(System.in);
-		Library myLibrary = Library.getInstance(); //TODO remove singleton
+		Library myLibrary = new Library();
 		
 		try {
 			int action = -1;
@@ -21,7 +21,7 @@ public class Main {
 				action = (int)controller.doCommand("displayMenu", GetCommandData("scanner", scanner));
 				switch (action) {
 				case 1:
-					controller.doCommand("displayBooks", GetCommandData());
+					controller.doCommand("displayBooks", GetCommandData("library", myLibrary));
 					break;
 				case 2:
 					controller.doCommand("addBook", GetCommandData("scanner", scanner, "library", myLibrary));

@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class Library {
 	
-	private static Library myLibrary;
 	private ArrayList<Book> books;
 
-	private Library() {
+	public Library() {
 		books = new ArrayList<>();
 		String sanderson = "Brandon Sanderson";
 		String stormlight = "The Stormlight Archive";
@@ -22,17 +21,6 @@ public class Library {
 		books.add(new Book(sanderson, "Alcatraz Versus the Knights of Cystallia", alcatraz, Genre.YOUNG_ADULT));
 		books.add(new Book(sanderson, "Alcatraz Versus the Shattered Lens", alcatraz, Genre.YOUNG_ADULT));
 		books.add(new Book(sanderson, "The Dark Talent", alcatraz, Genre.YOUNG_ADULT));
-	}
-	
-	/**
-	 * Singleton - make sure there is only once instance of this used everywhere to ensure we are using the same data everywhere.
-	 * @return
-	 */
-	public static Library getInstance() {
-		if (myLibrary == null) {
-			myLibrary = new Library();
-		}
-		return myLibrary;
 	}
 	
 	public void addBook(Book book) {
