@@ -74,7 +74,7 @@ public class Main {
 		int i = 0;
 		String key = "";
 		while (i < objects.length) {
-			var item = objects[i];
+			Object item = objects[i];
 			if (i % 2 == 0) {
 				key = (String)item;
 			} else {
