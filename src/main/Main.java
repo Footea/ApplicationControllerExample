@@ -24,7 +24,9 @@ public class Main {
 					controller.doCommand("displayBooks", GetCommandData("library", myLibrary));
 					break;
 				case 2:
-					controller.doCommand("addBook", GetCommandData("scanner", scanner, "library", myLibrary));
+					HashMap<String, Object> commandData = GetCommandData("scanner", scanner);
+					commandData.put("library", myLibrary);
+					controller.doCommand("addBook", commandData);
 					break;
 				case 0:
 					System.out.println("Goodbye");
@@ -43,45 +45,14 @@ public class Main {
 	}
 	
 	/**
-	 * Get an empty HashMap used as a data object for Application Controller Commands
-	 * @return Empty HashMap
-	 */
-	public static HashMap<String, Object> GetCommandData() {
-		HashMap<String, Object> data = new HashMap<>();
-		return data;
-	}
-
-	/**
 	 * Get a HashMap containing one data object for Application Controller Commands
 	 * @param key Key for the data object
 	 * @param value data object
 	 * @return HashMap with one command
 	 */
 	public static HashMap<String, Object> GetCommandData(String key, Object value) {
-		HashMap<String, Object> data = GetCommandData();
+		HashMap<String, Object> data = new HashMap<String, Object>();
 		data.put(key, value);
-		return data;
-	}
-	
-	/**
-	 * Get a HashMap with a variable number of commands used as a data object for Application Controller Commands
-	 * @param objects Needs to alternate between a String key and an Object data
-	 * @return HashMap with a variable number of commands
-	 */
-	public static HashMap<String, Object> GetCommandData(Object...objects) {
-		HashMap<String, Object> data = GetCommandData();
-		
-		int i = 0;
-		String key = "";
-		while (i < objects.length) {
-			Object item = objects[i];
-			if (i % 2 == 0) {
-				key = (String)item;
-			} else {
-				data.put(key, item);
-			}
-			i++;
-		}
 		return data;
 	}
 }
